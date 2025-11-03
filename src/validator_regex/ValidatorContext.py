@@ -1,4 +1,4 @@
-from strategies.ValidationStrategy import ValidationStrategy
+from validator_regex.strategies.ValidationStrategy import ValidationStrategy
 
 class ValidatorContext:
     def __init__(self, strategy: ValidationStrategy) -> None:

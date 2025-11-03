@@ -1,6 +1,5 @@
-from ValidatorContext import ValidatorContext
-
-from strategies.EmailValidation import EmailValidation
+from validator_regex.ValidatorContext import ValidatorContext
+from validator_regex.strategies.EmailValidation import EmailValidation
 
 class RegexValidator:
     @staticmethod

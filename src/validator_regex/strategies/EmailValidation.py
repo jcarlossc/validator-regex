@@ -1,5 +1,5 @@
 import regex
-from strategies.ValidationStrategy import ValidationStrategy
+from validator_regex.strategies.ValidationStrategy import ValidationStrategy
 
 class EmailValidation(ValidationStrategy):
     pattern = regex.compile(
