@@ -11,7 +11,7 @@ class CPFValidation(ValidationStrategy):
 
     Attributes:
         pattern (Pattern): Expressão regular pré-compilada usada para validar
-            o formato CPF.
+        o formato CPF.
     """
     pattern = regex.compile(
         r"^\d{3}\.\d{3}\.\d{3}-\d{2}$"
