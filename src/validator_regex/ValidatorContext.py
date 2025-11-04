@@ -1,5 +1,6 @@
 from validator_regex.strategies.ValidationStrategy import ValidationStrategy
 
+
 class ValidatorContext:
     """
     Define o contexto para execução de estratégias de validação.
@@ -16,6 +17,7 @@ class ValidatorContext:
         _strategy (ValidationStrategy): Armazena a estratégia de validação
             atualmente configurada no contexto.
     """
+
     def __init__(self, strategy: ValidationStrategy) -> None:
         """
         Inicializa o contexto com uma estratégia de validação específica.
@@ -48,4 +50,3 @@ class ValidatorContext:
             estratégia; caso contrário, retorna False.
         """
         return self._strategy.validate(text)
-

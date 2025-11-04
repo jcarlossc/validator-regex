@@ -1,6 +1,7 @@
 import regex
 from validator_regex.strategies.ValidationStrategy import ValidationStrategy
 
+
 class CPFValidation(ValidationStrategy):
     """
     Estratégia de validação para valores de CPF.
@@ -13,20 +14,19 @@ class CPFValidation(ValidationStrategy):
         pattern (Pattern): Expressão regular pré-compilada usada para validar
         o formato CPF.
     """
-    pattern = regex.compile(
-        r"^\d{3}\.\d{3}\.\d{3}-\d{2}$"
-    )
+
+    pattern = regex.compile(r"^\d{3}\.\d{3}\.\d{3}-\d{2}$")
 
     def validate(self, text: str) -> bool:
         """
         Valida se o texto fornecido representa um valor de CPF.
 
         Args:
-            text (str): Texto que se deseja validar, por exemplo, 
+            text (str): Texto que se deseja validar, por exemplo,
             "123.456.789-12".
 
         Returns:
-            bool: 
+            bool:
                 - `True` se o texto corresponder ao CPF válido.
                 - `False` caso contrário.
         """
