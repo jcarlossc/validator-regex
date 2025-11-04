@@ -2,6 +2,17 @@ import regex
 from validator_regex.strategies.ValidationStrategy import ValidationStrategy
 
 class EmailValidation(ValidationStrategy):
+    """
+    Estratégia de validação para valores de email.
+
+    Esta classe implementa a interface `ValidationStrategy` e utiliza expressões
+    regulares para validar se uma string representa corretamente um valor de
+    email.
+
+    Attributes:
+        pattern (Pattern): Expressão regular pré-compilada usada para validar
+        o formato email.
+    """
     pattern = regex.compile(
         r"^(?:[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+"
         r"(?:\.[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+)*"
@@ -21,4 +32,16 @@ class EmailValidation(ValidationStrategy):
     )
 
     def validate(self, text: str) -> bool:
+        """
+        Valida se o texto fornecido representa um valor de email.
+
+        Args:
+            text (str): Texto que se deseja validar, por exemplo, 
+            "carlos@gmail.com".
+
+        Returns:
+            bool: 
+                - `True` se o texto corresponder a um email válido.
+                - `False` caso contrário.
+        """
         return bool(self.pattern.match(text))
