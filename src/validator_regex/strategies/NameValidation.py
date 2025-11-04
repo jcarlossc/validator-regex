@@ -1,6 +1,7 @@
 import regex
 from validator_regex.strategies.ValidationStrategy import ValidationStrategy
 
+
 class NameValidation(ValidationStrategy):
     """
     Estratégia de validação para valores de nomes.
@@ -13,20 +14,19 @@ class NameValidation(ValidationStrategy):
         pattern (Pattern): Expressão regular pré-compilada usada para validar
         o formato nome.
     """
-    pattern = regex.compile(
-        r"^(?:(?:[A-ZÀ-Ý][a-zà-ÿ]+)(?:['\- ][A-ZÀ-Ýa-zà-ÿ]+)*)$"
-    )
+
+    pattern = regex.compile(r"^(?:(?:[A-ZÀ-Ý][a-zà-ÿ]+)(?:['\- ][A-ZÀ-Ýa-zà-ÿ]+)*)$")
 
     def validate(self, text: str) -> bool:
         """
         Valida se o texto fornecido representa um valor de nome.
 
         Args:
-            text (str): Texto que se deseja validar, por exemplo, 
+            text (str): Texto que se deseja validar, por exemplo,
             "Carlos da Costa".
 
         Returns:
-            bool: 
+            bool:
                 - `True` se o texto corresponder a um nome válido.
                 - `False` caso contrário.
         """

@@ -1,5 +1,6 @@
 from abc import ABC, abstractmethod
 
+
 class ValidationStrategy(ABC):
     """
     Define a interface abstrata para estratégias de validação de texto.
@@ -8,6 +9,7 @@ class ValidationStrategy(ABC):
     (como e-mail, CPF, CNPJ, moeda, hora, etc.) possam ser trocadas
     dinamicamente sem modificar o código cliente.
     """
+
     @abstractmethod
     def validate(self, text: str) -> bool:
         """
