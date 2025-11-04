@@ -1,11 +1,14 @@
 [project]
 name = "validator-regex"
 version = "0.1.0"
-description = ""
+description = "Validador de entradas com expressões regulares (Regex) em Python, usando o padrão Strategy. Suporte a e-mails, valores monetários, CPF, CNPJ, hora e nomes."
 authors = [
     {name = "jcarlossc",email = "jcarlossc1977@gmail.com"}
 ]
 readme = "README.md"
+homepage = "https://github.com/jcarlossc/validator-regex"
+repository = "https://github.com/jcarlossc/validator-regex"
+keywords = ["regex", "validator", "strategy", "python", "pypi", "validation"]
 requires-python = ">=3.13"
 dependencies = [
     "regex (>=2025.10.23,<2026.0.0)"
@@ -14,6 +17,14 @@ dependencies = [
 [tool.poetry]
 packages = [{include = "validator_regex", from = "src"}]
 
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Software Development :: Libraries",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent"
+]
 
 [tool.poetry.group.dev.dependencies]
 mypy = "^1.18.2"
