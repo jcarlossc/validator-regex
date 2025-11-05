@@ -1,0 +1,60 @@
+name: Publish to PyPI
+
+on:
+  push:
+    tags:
+      - "v*"  # Exemplo: v0.1.0
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+
+      - name: Install Poetry
+        run: pip install poetry
+
+      - name: Install dependencies
+        run: poetry install
+
+      - name: Run Black (formatação)
+        run: poetry run black --check .
+
+      - name: Run Types-Regex
+        run: poetry add --group dev types-regex
+
+      - name: Run mypy (checagem de tipos)
+        run: poetry run mypy .
+
+      - name: Run pytest (testes)
+        run: poetry run pytest --maxfail=1 --disable-warnings -v
+
+  publish:
+    needs: build
+    runs-on: ubuntu-latest
+    if: startsWith(github.ref, 'refs/tags/')
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+
+      - name: Install Poetry
+        run: pip install poetry
+
+      - name: Build and publish to PyPI
+        env:
+          POETRY_PYPI_TOKEN_PYPI: ${{ secrets.PYPI_API_TOKEN }}
+        run: |
+          poetry install
+          poetry build
+          poetry publish --username __token__ --password $POETRY_PYPI_TOKEN_PYPI
